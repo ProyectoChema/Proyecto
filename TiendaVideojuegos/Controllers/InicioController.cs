@@ -7,6 +7,7 @@ using TiendaVideojuegos.Modelo;
 
 namespace TiendaVideojuegos.Controllers
 {
+    //Inicio Controller
     public class InicioController : Controller
     {
         ControlAccesoDAO<TUsuario> control = new ControlAccesoDAO<TUsuario>();
