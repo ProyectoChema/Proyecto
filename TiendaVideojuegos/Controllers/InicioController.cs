@@ -4,6 +4,7 @@ using TiendaVideojuegos.Negocio;
 using System.Collections.Generic;
 using System.Linq;
 using TiendaVideojuegos.Modelo;
+using TiendaVideojuegos.Models;
 
 namespace TiendaVideojuegos.Controllers
 {
@@ -17,6 +18,25 @@ namespace TiendaVideojuegos.Controllers
             return View();
         }
 
+        [HttpPost]
+        public ActionResult Index(LoginViewModel loginDataModel)
+        {
+            if (ModelState.IsValid)
+            {
+                // AQUÍ EL CÓDIGO DE VALIDACIÓN DEL USUARIO
+                return RedirectToAction("LoginOk");
+            }
+            else
+            {
+                return View(loginDataModel);
+            }
+        }
+
+        public ActionResult LoginOK()
+        {
+            // LA VALIDACIÓN DEL USUARIO HA SIDO CORRECTA
+            return View();
+        }
 
         [HttpPost]
         public ActionResult Login(TUsuario usuario)
