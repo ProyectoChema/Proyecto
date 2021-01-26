@@ -3,7 +3,6 @@ using TiendaVideojuegos.Comun;
 using TiendaVideojuegos.Negocio;
 using System.Collections.Generic;
 using System.Linq;
-using TiendaVideojuegos.Modelo;
 using TiendaVideojuegos.Models;
 
 namespace TiendaVideojuegos.Controllers

@@ -1,6 +1,6 @@
 ﻿using TiendaVideojuegos.Comun;
 
-namespace TiendaVideojuegos.Modelo
+namespace TiendaVideojuegos.Models
 {
     public class TUsuario
     {
