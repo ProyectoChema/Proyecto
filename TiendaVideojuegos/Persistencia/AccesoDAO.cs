@@ -7,7 +7,6 @@ namespace TiendaVideojuegos.Persistencia
 {
     public class AccesoDAO<T> : IAcceso<T> where T : new()
     {
-        //asdasdasd
         public bool BorradoVirtual(object objeto)
         {
             AccesoBD acceso = new AccesoBD();

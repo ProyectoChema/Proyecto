@@ -1,0 +1,48 @@
+﻿@using TiendaVideojuegos.Models
+@model List<TiendaVideojuegos.Models.TVideojuego>
+
+@{
+    ViewBag.Title = "Consultar";
+}
+
+
+<div class="container">
+    <center>
+        <!--span id="totalvideojuegos">Videojuegos a la venta: @Model.Count</!--span><br /><br /-->
+        <div class="modal-body row" id="modal-champions-body">
+            @foreach (var videojuego in Model)
+            {
+                <div id="@videojuego.CodVideojuego">
+                    <div><img alt="Portada" src=@videojuego.Imagen width="200" height="200"></div>
+                    <div>
+                        @Html.ActionLink(videojuego.Nombre, "verVideojuego", "Videojuego", new { CodVideojuego = @videojuego.CodVideojuego }, new { @class = "text-dark" })
+                    </div>
+                    @{ if (Session["usuario"] != null && ((TUsuario)Session["usuario"]).Rol.Equals("admin"))
+                        {
+                            <div>@Html.ActionLink(" Editar ", "modificarVideojuego", "Videojuego", new { CodVideojuego = @videojuego.CodVideojuego }, null)</div>
+
+                            <div>
+                                @Ajax.ActionLink(" Borrar ", "borrarVideojuego", "Videojuego", new { CodVideojuego = @videojuego.CodVideojuego }, new AjaxOptions()
+                                {
+                                    HttpMethod = "GET",
+                                    InsertionMode = InsertionMode.Replace,
+                                    UpdateTargetId = "totalvideojuegos",
+                                }, new { id = videojuego.CodVideojuego, onclick = "myFunction(id);" })
+                            </div>
+                        }
+                    }
+                    <div><br /></div>
+                </div>
+            }
+        </div>
+    </center>
+</div>
+
+<script>
+        function myFunction(a) {
+            var list = document.getElementById(a);
+            if (list.hasChildNodes()) {
+                list.parentNode.removeChild(list);
+            }
+        }
+</script>

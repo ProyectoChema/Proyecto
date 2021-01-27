@@ -1,0 +1,87 @@
+﻿@model List<object>
+@using TiendaVideojuegos.Models
+
+<h3 style="margin-bottom: 25px; text-align: center;">Añadir Videojuego</h3>
+<p class="text-left">Mensaje: <span id="mensaje"></span></p>
+
+<div class="container">
+    <div class="col-md-10">
+        <div class="form-area">
+            <form class="form" method="post" id="my_form" onsubmit="Enviar()">
+                <div class="form-group">
+                    <label for="">Nombre</label>
+                    <input name="nombre" type="text" maxlength="30" required="3" class="form-control" placeholder="Nombre" id="nombre" />
+                </div>
+                <div class="form-group">
+                    <label for="autor">Empresa Desarrolladora</label>
+                    <input name="Autor" type="text" maxlength="30" minlength="3" required="" class="form-control" placeholder="Empresa Desarrolladora" id="empresaDesarrolladora" />
+                </div>
+                <div class="form-group">
+                    <label for="genero">Genero</label>
+                    <select name="Genero" class="form-control" id="genero">
+                        @foreach (TGenero genero in Model)
+                        {
+                            <option value="@genero.Genero">@genero.Genero</option>
+                        }
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="edadRecomendada">EdadRecomendada</label>
+                    <input name="edadRecomendada" type="text" required="" class="form-control" placeholder="Edad recomendada para jugar al videojuego" id="edadRecomendada" />
+                </div>
+                <div class="form-group">
+                    <label for="precio">Precio</label>
+                    <input name="Precio" type="text" required="" class="form-control" placeholder="Precio" id="precio" />
+                </div>
+                <div class="form-group">
+                    <label for="imagen">Imagen</label>
+                    <input name="Imagen" type="text" required="" class="form-control" placeholder="Imagen" id="imagen" />
+                </div>
+                <br>
+
+                <div class="submit">
+                    <input type="submit" id="botonEnviar" value="Insertar" class="btn btn-primary pull-right" />
+                    <input type="reset" value="Borrar Campos" class="btn btn-danger pull-right" id="button-reset">
+                    <div class="ease"></div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+<script>
+
+    let $mensaje = document.querySelector('#mensaje');
+
+    function Enviar()
+    {
+        var uri = @Url.Action("addVideojuego", "Videojuego");
+        var videojuego = {};
+        videojuego = cargarVideojuego(videojuego);
+        $.ajax({
+            url: uri,
+          data: JSON.stringify(videojuego),
+          type: 'POST',
+          success: exito,
+          contentType: 'application/json'
+        });
+    }
+
+    function exito(data) {
+        $mensaje.textContent = data;
+    }
+
+    function cargarVideojuego(videojuego) {
+        disco.Nombre = document.getElementById("nombre").value;
+        disco.EmpresaDesarrolladora = document.getElementById("empresaDesarrolladora").value;
+        disco.Genero = document.getElementById("genero").value;
+        disco.Canciones = document.getElementById("edadRecomendada").value;
+        disco.Precio = document.getElementById("precio").value;
+        disco.Imagen = document.getElementById("imagen").value;
+        return videojuego;
+    }
+</script>
+
+
+

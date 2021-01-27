@@ -1,0 +1,38 @@
+﻿@model TiendaVideojuegos.Models.TVideojuego
+
+@{
+    ViewBag.Title = "verVideojuego";
+    Layout = "~/Views/Plantilla/Plantilla.cshtml";
+}
+
+<div>
+    <center><h4> DATOS DEL VIDEOJUEGO </h4></center>
+</div>
+
+<br />
+<br />
+<br />
+
+<div class="container">
+    <div class="row">
+        <img border="1" alt="Portada" src=@Model.Imagen width="150" height="150">
+    </div>
+    <div class="row">
+        <label class="col-sm-5">Nombre</label><span class="prop-border col-sm-7">@Model.Nombre</span>
+    </div>
+    <div class="row">
+        <label class="col-sm-5">Empresa desarrolladora</label><span class="prop-border col-sm-7">@Model.EmpresaDesarrolladora</span>
+    </div>
+    <div class="row">
+        <label class="col-sm-5">Género del videojuego</label><span class="prop-border col-sm-7">@Model.Genero</span>
+    </div>
+    <div class="row">
+        <label class="col-sm-5">Precio</label><span class="prop-border col-sm-7">@Model.Precio</span>
+    </div>
+    <div class="row">
+        <label class="col-sm-5">Edad recomendada para jugarlo</label><span class="prop-border col-sm-7">@Model.EdadRecomendada</span>
+    </div>
+</div>
+
+
+<!--@Html.ActionLink("AÑADIR AL CARRITO", "addCarrito", "Videojuego", new { CodVideojuego = Model.CodVideojuego, accion = "Consultar" }, null)-->
