@@ -2,6 +2,7 @@
 
 namespace TiendaVideojuegos.Models
 {
+    //TUsuario
     public class TUsuario
     {
 
